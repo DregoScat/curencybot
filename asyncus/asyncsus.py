@@ -24,7 +24,9 @@ async def start(message: types.Message, state: FSMContext):
     keyboard = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
     buttons = [KeyboardButton(text="/convert"), KeyboardButton(text="/help")]
     keyboard.add(*buttons)
-    await message.answer("Welcome to the ImposterLoL bot. Please choose a action below.\n If you don't understand something use '/Help'.\nThis bot is on the stage of the coding, so there could be errors.", reply_markup=keyboard)
+    await message.answer("Welcome to the ImposterLoL bot. Please choose a action below.\n If you don't understand something use '/Help'.\nThis bot is on the stage of the coding, so there could be errors.\nHere's the presentation of our bot (it's a big file so it can take sometime):", reply_markup=keyboard)
+    with open('presentation/2.pdf', 'rb') as pdf:
+        await bot.send_document(message.from_user.id, pdf)
 
 
 #~Help~
