@@ -9,17 +9,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
       
-      - name: Setup Database
-        env:
-          RAILS_ENV: test
-          POSTGRES_HOST: localhost
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: V7753191V
-          POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
-        run: |
-          cp config/database.yml.ci config/database.yml
-          bundle exec rails db:create
-          bundle exec rails db:schema:load
+
         
 
       - name: Set up Python
